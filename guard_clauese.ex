@@ -6,8 +6,10 @@ end
 
 defmodule EvenOrOdd do 
     require Integer 
-    def check(num) when Integer.is_odd(num), do: "odd"
-    def check(num) when Integer.is_even(num), do: "even"
+    defguard is_even(num) when Integer.is_even(num)
+    defguard is_odd(num) when Integer.is_odd(num)
+    def check(num) when is_odd(num), do: "odd"
+    def check(num) when is_even(num), do: "even"
 end
 
 IO.puts GuardNumber.abs(5)
@@ -15,3 +17,5 @@ IO.puts GuardNumber.abs(-5)
 IO.puts GuardNumber.abs(-100)
 IO.puts EvenOrOdd.check(20)
 IO.puts EvenOrOdd.check(21)
+IO.puts EvenOrOdd.check(33)
+IO.puts EvenOrOdd.check(34)
